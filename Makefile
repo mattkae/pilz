@@ -3,7 +3,7 @@
 
 CXX = g++ -std=c++11
 CXXFLAGS = -I/usr/include/tesseract/ -I/usr/local/leptonica/
-LIBS = -ltesseract -llept `pkg-config --libs opencv`
+LIBS = -ltesseract `pkg-config --libs opencv lept`
 EXE = pilz
 
 src = $(wildcard src/*.cpp)
