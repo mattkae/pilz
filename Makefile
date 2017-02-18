@@ -3,7 +3,7 @@
 
 CXX = g++ -std=c++11
 CXXFLAGS = -I/usr/include/tesseract/ -I/usr/local/leptonica/
-LIBS = -L/usr/local/lib -ltesseract -llept `pkg-config --libs opencv tesseract `
+LIBS = `pkg-config --libs opencv tesseract leptonica`
 EXE = pilz
 
 src = $(wildcard src/*.cpp)
@@ -14,4 +14,4 @@ $(EXE):$(obj)
 
 .PHONY: clean
 clean:
-	rm -f $(EXE)
+	rm -f src/*.o $(EXE)
