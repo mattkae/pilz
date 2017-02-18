@@ -2,8 +2,8 @@
 # -L/Applications/MATLAB_R2014b.app/bin/maci64 -leng -lmx 
 
 CXX = g++ -std=c++11
-CXXFLAGS = -I/usr/local/include/tesseract/ -I/usr/local/include/leptonica/
-LIBS = -L/usr/local/lib -ltesseract -llept `pkg-config --libs opencv`
+CXXFLAGS = -I/usr/include/tesseract/ -I/usr/local/leptonica/
+LIBS = -L/usr/local/lib -ltesseract -llept `pkg-config --libs opencv tesseract `
 EXE = pilz
 
 src = $(wildcard src/*.cpp)
