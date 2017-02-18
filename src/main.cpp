@@ -63,7 +63,7 @@ const char* Convert_To_GrayScale(const char* path) {
     cvtColor(im_rgb,im_gray,CV_RGB2GRAY);
     Mat img_bw = im_gray > 128;
     std::string old_path = path;
-    std::string new_path = "./" + old_path.substr(old_path.find_last_of("/") + 1, old_path.size());
+    std::string new_path = old_path.substr(old_path.find_last_of("/") + 1, old_path.size());
     imwrite(new_path.c_str(), img_bw);
     return new_path.c_str();
 }
