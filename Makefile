@@ -10,7 +10,7 @@ src = $(wildcard src/*.cpp)
 obj = $(src:.cpp=.o)
 
 $(EXE):$(obj)
-	$(CXX) $(CXXFLAGS) $(LIBS) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 
 .PHONY: clean
 clean:
