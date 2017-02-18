@@ -25,7 +25,7 @@ std::vector<string> labelParse(string filename) {
     int space = 0;
 
     pos = input.find("TAKE ");
-    pos += 4; //we pass take
+    pos += 5; //we pass take
     space = input.find(" ", pos);
     pillNum = input.substr(pos, space - pos);
 
@@ -49,8 +49,16 @@ std::vector<string> labelParse(string filename) {
     pos = input.find("BY ");
     pos = pos + 3;
     pos = input.find(" ", pos);
-    space = input.find(" ", pos + 1);
     pos = pos + 1;
+    int newLine = 0;
+    int temp = 0;
+    newLine = input.find("\n",pos);
+    temp = input.find(" ", pos);
+    if (temp < newLine) {
+        space = temp;    
+    } else if (newLine < temp) {
+        space = newLine;
+    }
     frequency = input.substr(pos, space - pos);
 
     pos = input.find("MG"); //lets find dosage
@@ -62,7 +70,7 @@ std::vector<string> labelParse(string filename) {
         }    
     }
     //this should get the number of MG's in a pill
-    dosage = input.substr(space, pos - space + 3);
+    dosage = input.substr(space + 1, pos - space + 3);
 
     space = space - 1; //first character of drug name
     pos = space - 1;
@@ -73,7 +81,7 @@ std::vector<string> labelParse(string filename) {
         }
     }
 
-    drugName = input.substr(pos, space - pos + 1);
+    drugName = input.substr(pos + 1, space - pos + 1);
 
     inFile.close();
     std::vector<string> output;
