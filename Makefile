@@ -3,7 +3,7 @@
 
 CXX = g++ -std=c++11
 CXXFLAGS = -I/usr/local/include/tesseract/ -I/usr/local/include/leptonica/ -O3 -I/Applications/MATLAB_R2014b.app/extern/include 
-LIBS = -L/usr/local/lib -ltesseract -llept `pkg-config --libs opencv`
+LIBS = `pkg-config --libs opencv tesseract leptonica`
 EXE = pilz
 
 src = $(wildcard src/*.cpp)
