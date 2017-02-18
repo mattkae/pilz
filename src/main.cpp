@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "Data.h"
+#include "LabelParse.h"
 //#include "engine.h" Maybe Matlab.
 
 using namespace tesseract;
@@ -42,6 +43,10 @@ int main(int argc, char * argv[])
         int conf = api->MeanTextConf();
         data.Write(outText, conf, imageIndex);
         pixDestroy(&image);
+        std::vector<std::string> results = labelParse("./" + data.GetFileName());
+        for (int i = 0; i < results.size(); i++) {
+            std::cout << results[i] << std::endl;
+        }
     }
 
     // Destroy used object and release memory
@@ -58,7 +63,7 @@ const char* Convert_To_GrayScale(const char* path) {
     cvtColor(im_rgb,im_gray,CV_RGB2GRAY);
     Mat img_bw = im_gray > 128;
     std::string old_path = path;
-    std::string new_path = "./grey_images/" + old_path.substr(old_path.find_last_of("/") + 1, old_path.size());
+    std::string new_path = "./" + old_path.substr(old_path.find_last_of("/") + 1, old_path.size());
     imwrite(new_path.c_str(), img_bw);
     return new_path.c_str();
 }

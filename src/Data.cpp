@@ -17,7 +17,7 @@ Data::~Data() {
 
 void Data::Write(std::string outText, int confidence, int index) {
 	ofstream file;
-	file.open(this->filename, std::fstream::in | std::fstream::app);
+	file.open(this->filename);
 	file << "-----------------PRESCRIPTION: #" << index << "-----------------" << std::endl;
 	file << "Confidence: " << confidence << std::endl;
 	file << outText;

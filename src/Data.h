@@ -9,6 +9,7 @@ public:
 	Data(const char* filename = "outtext.txt");
 	~Data();
 	void Write(std::string outText, int confidence, int index);
+	std::string GetFileName() { return this->filename; }
 private:
 	std::string filename;
 };
